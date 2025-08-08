@@ -1,6 +1,6 @@
 ```mermaid
-    A[Usuário] -->|Requisição Inicial| B(Navegador)
-    B -->|GET https://studies.cs.helsinki.fi/exampleapp/spa| C[Servidor]
+    A -->|Requisição Inicial| B
+    B -->|GET https://studies.cs.helsinki.fi/exampleapp/spa| C
     C -->|HTML, CSS, JS| B
     B -->|Renderiza a UI| A
     A -->|Interage com a UI| B
