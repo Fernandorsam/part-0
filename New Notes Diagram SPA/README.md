@@ -1,7 +1,13 @@
 ```mermaid
-    A--> |1. Digita a nova nota e clica em "Salvar"| B(Navegador)
-    B -->|2. Requisição POST para /notes| C (API)
-    C -->|3. Salva a nova nota no banco de dados| D((Banco de Dados))
-    D -->|4. Retorna confirmação e dados da nova nota em JSON| C
-    C -->|5. Resposta em JSON (status 201 Created)| B
-    B -->|6. Código JS adiciona a nova nota à lista na UI| A
+    sequenceDiagram
+    participant Usuário
+    participant Navegador
+    participant Servidor
+    participant BancoDeDados
+
+    Usuário->>Navegador: 1. Digita a nova nota e clica em "Salvar"
+    Navegador->>Servidor: 2. Requisição POST para /notes com dados da nota
+    Servidor->>BancoDeDados: 3. Salva a nota
+    BancoDeDados-->>Servidor: 4. Confirmação
+    Servidor-->>Navegador: 5. Responde com dados da nova nota em JSON
+    Navegador-->>Usuário: 6. Adiciona a nova nota à lista na UI (sem recarregar)
